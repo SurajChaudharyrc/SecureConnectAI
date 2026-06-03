@@ -1,0 +1,27 @@
+# Keep the build context small + the image clean.
+.venv/
+**/__pycache__/
+*.pyc
+*.pyo
+# Local SQLite DBs must NOT ship (prod uses Postgres via DATABASE_URL).
+*.db
+*.db-shm
+*.db-wal
+secureconnect.db*
+backend/tests/
+docs/
+.git/
+.pytest_cache/
+node_modules/
+*.md
+*.log
+# NOTE: do not blanket-ignore *.txt — backend/requirements-prod.txt must ship.
+test_output.txt
+test_cv2_log.txt
+verif_log.txt
+id_photo.jpg
+Unconfirmed*.crdownload
+$code
+JSONResponse
+backend/.env
+.env

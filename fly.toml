@@ -1,0 +1,30 @@
+# Fly.io config for SecureConnect-AI. WebSockets work over Fly's http_service.
+# CRITICAL: this app uses an in-process in-memory chat broker, so it must run as
+# a SINGLE machine. Do not `fly scale count >1` without a Redis-backed broker.
+app = "secureconnect-ai"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  APP_ENV = "prod"
+  DEEPFACE_ENABLED = "false"
+  PORT = "8000"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = false   # keep the single instance warm (presence/broker live in memory)
+  auto_start_machines = true
+  min_machines_running = 1
+  max_machines_running = 1     # single-process invariant
+
+  [http_service.concurrency]
+    type = "connections"
+    hard_limit = 250
+    soft_limit = 200
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
