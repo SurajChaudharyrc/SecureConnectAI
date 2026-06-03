@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>Verify identity — SecureConnect-AI</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/discover"><span class="brand-dot" aria-hidden="true"></span><span>SecureConnect<span class="muted">·AI</span></span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="/discover">Discover</a>
+        <a class="nav-link" href="/verify">Verify</a>
+        <a class="nav-link" href="/profile">Profile</a>
+        <button class="nav-link btn btn-ghost btn-sm" data-logout>Sign out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row-between" style="margin-bottom: var(--s-5); flex-wrap:wrap; gap: var(--s-4);">
+      <div>
+        <span class="section-eyebrow">Step into trust</span>
+        <h1 style="margin-top:8px;">Verify your identity</h1>
+        <p class="muted" style="max-width:62ch;">Upload a clear photo of a government ID, then take a live selfie. Faces are compared with a Siamese model and an anti-spoofing pass.</p>
+      </div>
+      <div class="badge badge-cyan badge-dot">Encrypted in transit</div>
+    </div>
+
+    <ol class="stepper" aria-label="Verification progress">
+      <li class="stepper-step" data-step="1"><span class="num">1</span><span>Upload ID</span></li>
+      <li class="stepper-step" data-step="2"><span class="num">2</span><span>Capture selfie</span></li>
+      <li class="stepper-step" data-step="3"><span class="num">3</span><span>Submit & match</span></li>
+    </ol>
+
+    <div class="verify-grid" style="margin-top: var(--s-6);">
+      <article class="card card-padded">
+        <div class="card-title">1. Upload your ID</div>
+        <p class="card-subtitle">JPG, PNG, or WEBP. Max 8 MB.</p>
+
+        <div class="dropzone" data-dz-id tabindex="0" role="button" aria-label="Upload ID photo">
+          <div class="dropzone-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:600;">Drop your ID here</div>
+            <div class="dim" style="font-size:0.88rem;">or click to choose a file</div>
+          </div>
+          <img data-dz-id-thumb class="dropzone-thumb hidden" alt="" />
+          <input type="file" data-input-id accept="image/jpeg,image/png,image/webp" hidden />
+        </div>
+        <div class="upload-thumb-wrap">
+          <span class="upload-thumb-meta" data-id-meta></span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-title">2. Capture a live selfie</div>
+          <p class="card-subtitle">Webcam preferred. Upload as fallback.</p>
+
+          <div class="webcam-wrap">
+            <video data-video playsinline muted aria-label="Selfie webcam preview"></video>
+            <div class="webcam-ring" aria-hidden="true"></div>
+            <canvas data-canvas hidden></canvas>
+          </div>
+
+          <div class="row" style="margin-top: var(--s-4); flex-wrap: wrap; gap: var(--s-3);">
+            <button class="btn btn-primary" data-start-cam type="button">Start camera</button>
+            <button class="btn btn-ghost hidden" data-stop-cam type="button">Stop camera</button>
+            <button class="btn btn-ghost hidden" data-capture type="button">Capture selfie</button>
+            <button class="btn btn-ghost" data-pick-selfie type="button">Upload instead</button>
+            <input type="file" data-input-selfie accept="image/jpeg,image/png,image/webp" hidden />
+          </div>
+
+          <div class="upload-thumb-wrap">
+            <img data-selfie-thumb class="captured-thumb hidden" alt="Captured selfie preview" />
+          </div>
+        </div>
+      </article>
+
+      <aside class="card card-padded">
+        <div class="card-title">3. Submit & match</div>
+        <p class="card-subtitle">Trust score updates immediately on success.</p>
+
+        <ul class="stack" style="font-size:0.95rem; color: var(--fg-1);">
+          <li class="row" style="align-items:flex-start; gap: var(--s-3);">
+            <span class="badge badge-cyan" style="margin-top:2px;">A</span>
+            <span>The ID and selfie are compared with the same Siamese model. Anti-spoofing is on by default.</span>
+          </li>
+          <li class="row" style="align-items:flex-start; gap: var(--s-3);">
+            <span class="badge badge-violet" style="margin-top:2px;">B</span>
+            <span>Files are kept only in OS-managed temp paths and are deleted immediately after inference.</span>
+          </li>
+          <li class="row" style="align-items:flex-start; gap: var(--s-3);">
+            <span class="badge" style="margin-top:2px;">C</span>
+            <span>Successful matches bump your trust by +0.2. Failures bump it down by 0.1 — autonomous governance.</span>
+          </li>
+        </ul>
+
+        <button class="btn btn-primary btn-block" data-submit type="button" disabled style="margin-top: var(--s-5);">Verify identity</button>
+
+        <div data-result style="margin-top: var(--s-5);"></div>
+
+        <div class="alert alert-info" style="margin-top: var(--s-5);">
+          We don't store your raw images. Only a boolean verification flag and an audit row.
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot-inner">
+      <span>© SecureConnect-AI — demo build</span>
+      <span class="mono dim">Anti-spoofing · CSRF · Rate-limited 3/min</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/verify.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

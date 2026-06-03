@@ -1,0 +1,90 @@
+:root {
+  /* Brand */
+  --brand-cyan: #5cf2e0;
+  --brand-violet: #8b7bff;
+  --brand-rose: #ff7ab8;
+  --brand-lime: #c8f06b;
+
+  /* Surfaces */
+  --bg-0: #07080d;
+  --bg-1: #0b0d14;
+  --bg-2: #11141d;
+  --bg-3: #181c28;
+  --bg-4: #20253a;
+  --surface-glass: rgba(20, 24, 36, 0.62);
+  --surface-glass-strong: rgba(20, 24, 36, 0.82);
+
+  /* Text */
+  --fg-0: #f5f7ff;
+  --fg-1: #d6dbeb;
+  --fg-2: #97a0b8;
+  --fg-3: #6b7390;
+  --fg-muted: #4a5170;
+
+  /* Lines */
+  --line-1: rgba(255, 255, 255, 0.07);
+  --line-2: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.22);
+
+  /* Semantic */
+  --ok: #5dd29c;
+  --ok-bg: rgba(93, 210, 156, 0.12);
+  --warn: #ffbf57;
+  --warn-bg: rgba(255, 191, 87, 0.12);
+  --err: #ff6b8b;
+  --err-bg: rgba(255, 107, 139, 0.12);
+  --info: var(--brand-cyan);
+  --info-bg: rgba(92, 242, 224, 0.10);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, var(--brand-cyan) 0%, var(--brand-violet) 100%);
+  --grad-warm: linear-gradient(135deg, var(--brand-violet) 0%, var(--brand-rose) 100%);
+  --grad-soft: linear-gradient(135deg, rgba(92, 242, 224, 0.20) 0%, rgba(139, 123, 255, 0.20) 100%);
+
+  /* Type */
+  --font-sans: "Inter", "SF Pro Text", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Spacing scale */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 40px;
+  --s-9: 56px;
+  --s-10: 72px;
+  --s-11: 96px;
+
+  /* Radii */
+  --r-1: 6px;
+  --r-2: 10px;
+  --r-3: 14px;
+  --r-4: 18px;
+  --r-5: 24px;
+  --r-pill: 999px;
+
+  /* Shadow */
+  --sh-1: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 24px rgba(0, 0, 0, 0.35);
+  --sh-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 48px rgba(0, 0, 0, 0.45);
+  --sh-glow-cyan: 0 0 0 1px rgba(92, 242, 224, 0.35), 0 12px 40px rgba(92, 242, 224, 0.20);
+  --sh-glow-violet: 0 0 0 1px rgba(139, 123, 255, 0.35), 0 12px 40px rgba(139, 123, 255, 0.20);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 120ms;
+  --t-base: 220ms;
+  --t-slow: 480ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,21 @@
+# Production runtime deps (chat + auth + org/geo). Deliberately EXCLUDES the
+# DeepFace/TensorFlow stack: face verification is disabled in this deployment
+# (DEEPFACE_ENABLED=false), and face.py imports deepface lazily, so the verify
+# endpoints return a graceful "disabled" stub instead of crashing. Also excludes
+# dev/test deps. Adds a Postgres driver (SQLite can't persist on a cloud host).
+fastapi==0.118.2
+uvicorn[standard]==0.32.1
+pydantic==2.9.2
+pydantic-settings==2.6.1
+sqlalchemy==2.0.36
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+python-multipart==0.0.12
+slowapi==0.1.9
+itsdangerous==2.2.0
+# Required by pydantic EmailStr (RegisterRequest/OrgRequest); without it the
+# app crashes at import. (structlog was unused and is intentionally omitted.)
+email-validator==2.3.0
+
+# Postgres driver — use DATABASE_URL=postgresql+psycopg://USER:PASS@HOST:5432/DB
+psycopg[binary]==3.2.3

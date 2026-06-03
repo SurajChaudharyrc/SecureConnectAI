@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>Profile — SecureConnect-AI</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/discover"><span class="brand-dot" aria-hidden="true"></span><span>SecureConnect<span class="muted">·AI</span></span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="/discover">Discover</a>
+        <a class="nav-link" href="/verify">Verify</a>
+        <a class="nav-link" href="/profile">Profile</a>
+        <button class="nav-link btn btn-ghost btn-sm" data-logout>Sign out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="profile-head" data-profile-head style="margin-bottom: var(--s-6);"></div>
+
+    <div class="profile-grid">
+      <section class="card card-padded">
+        <div class="card-title">Trust & verification</div>
+        <p class="card-subtitle">Server-managed. Updated by verification outcomes.</p>
+
+        <div class="row" style="justify-content:center; padding: var(--s-3) 0 var(--s-5);">
+          <div class="gauge" data-gauge></div>
+        </div>
+
+        <div class="stat-grid" data-stats></div>
+
+        <div class="card-section">
+          <div class="card-title">Edit display name</div>
+          <form class="row" data-name-form style="gap: var(--s-3); align-items: flex-end;">
+            <div class="field grow">
+              <label class="label" for="pf-name">Full name</label>
+              <input class="input" id="pf-name" name="full_name" required maxlength="120" />
+            </div>
+            <button class="btn btn-ghost" type="submit">Save</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="card card-padded">
+        <div class="card-title">Interests</div>
+        <p class="card-subtitle">Drive niche suggestions and help groups find you.</p>
+
+        <div class="interest-chips" data-interests></div>
+
+        <form class="row" data-interest-form style="gap: var(--s-3); margin-top: var(--s-4);">
+          <div class="field grow">
+            <label class="label" for="pf-interest">Add interest</label>
+            <input class="input" id="pf-interest" name="interest" maxlength="40" placeholder="eg, Photography" />
+          </div>
+          <button class="btn btn-primary" type="submit">Add</button>
+        </form>
+
+        <div class="card-section">
+          <div class="card-title">Organization verification</div>
+          <p class="card-subtitle">Verify an org email to unlock domain-restricted groups regardless of distance.</p>
+
+          <div data-org-status style="margin-bottom: var(--s-4);"></div>
+          <div data-org-panel>
+            <form class="stack" data-org-form>
+              <div class="field">
+                <label class="label" for="org-email">Email at organization</label>
+                <input class="input" id="org-email" name="email" type="email" required placeholder="you@muj.manipal.edu" />
+              </div>
+              <div class="field">
+                <label class="label" for="org-domain">Domain</label>
+                <input class="input" id="org-domain" name="domain" required placeholder="muj.manipal.edu" />
+                <span class="help">Must match the right-hand side of the email exactly.</span>
+              </div>
+              <button class="btn btn-primary" type="submit">Send code</button>
+            </form>
+
+            <form class="stack hidden" data-org-confirm-form style="margin-top: var(--s-5);">
+              <div class="field">
+                <label class="label" for="org-email-c">Email</label>
+                <input class="input" id="org-email-c" name="email" type="email" readonly />
+              </div>
+              <div class="field">
+                <label class="label" for="org-code">6-digit code</label>
+                <input class="input mono" id="org-code" name="code" inputmode="numeric" pattern="\d{6}" maxlength="6" required placeholder="000000" />
+                <span class="help">Find the code in your terminal where the server is running.</span>
+              </div>
+              <button class="btn btn-primary" type="submit">Verify code</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot-inner">
+      <span>© SecureConnect-AI — demo build</span>
+      <span class="mono dim">Sessions · CSRF · Strict headers</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/profile.js"></script>
+</body>
+</html>

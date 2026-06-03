@@ -1,0 +1,24 @@
+fastapi==0.118.2
+uvicorn[standard]==0.32.1
+pydantic==2.9.2
+pydantic-settings==2.6.1
+sqlalchemy==2.0.36
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+python-multipart==0.0.12
+slowapi==0.1.9
+itsdangerous==2.2.0
+structlog==24.4.0
+
+# DeepFace stack (heavy — install separately if face verify is needed)
+deepface==0.0.93
+tf-keras==2.18.0
+opencv-python-headless==4.10.0.84
+tensorflow==2.18.0
+pandas==2.2.3
+scikit-learn==1.5.2
+
+# dev
+pytest==8.3.3
+httpx==0.27.2
+pytest-asyncio==0.24.0

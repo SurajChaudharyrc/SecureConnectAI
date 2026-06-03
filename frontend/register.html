@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>Create account — SecureConnect-AI</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/"><span class="brand-dot" aria-hidden="true"></span><span>SecureConnect<span class="muted">·AI</span></span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/login">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-shell">
+    <article class="card card-strong auth-card">
+      <h1 class="auth-title">Create your account</h1>
+      <p class="auth-subtitle">A username, an email, a strong password — then we'll verify you're real.</p>
+
+      <form class="stack" data-form="register" novalidate>
+        <div class="field">
+          <label class="label" for="reg-full-name">Full name</label>
+          <input class="input" id="reg-full-name" name="full_name" autocomplete="name" required minlength="1" maxlength="120" />
+        </div>
+        <div class="field">
+          <label class="label" for="reg-username">Username</label>
+          <input class="input" id="reg-username" name="username" autocomplete="username" required minlength="3" maxlength="32" pattern="[a-zA-Z0-9_]{3,32}" />
+          <span class="help">Letters, numbers, underscore. 3–32 characters.</span>
+        </div>
+        <div class="field">
+          <label class="label" for="reg-email">Email</label>
+          <input class="input" id="reg-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label class="label" for="reg-password">Password</label>
+          <input class="input" id="reg-password" name="password" type="password" autocomplete="new-password" required minlength="10" maxlength="128" />
+          <span class="help">At least 10 characters, including letters and digits.</span>
+        </div>
+
+        <div class="help error hidden" data-error role="alert"></div>
+
+        <button class="btn btn-primary btn-block" type="submit">Create account</button>
+      </form>
+
+      <p class="auth-foot">Already have one? <a href="/login">Sign in</a></p>
+    </article>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot-inner">
+      <span>© SecureConnect-AI — demo build</span>
+      <span class="mono dim">Strict CSP · CSRF · Rate-limited</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>

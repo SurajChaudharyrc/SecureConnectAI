@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>Discover — SecureConnect-AI</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/discover"><span class="brand-dot" aria-hidden="true"></span><span>SecureConnect<span class="muted">·AI</span></span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="/discover">Discover</a>
+        <a class="nav-link" href="/verify">Verify</a>
+        <a class="nav-link" href="/profile">Profile</a>
+        <button class="nav-link btn btn-ghost btn-sm" data-logout>Sign out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="discover-head">
+      <div>
+        <span class="section-eyebrow">Hyperlocal</span>
+        <h1 style="margin-top:8px;">Discover groups near you</h1>
+        <p class="muted" style="max-width:62ch;">Groups appear when you're within their radius — or when a verified organization domain matches.</p>
+      </div>
+      <div class="row" style="gap: var(--s-2);">
+        <button class="btn btn-ghost btn-sm" data-refresh type="button">Refresh</button>
+      </div>
+    </div>
+
+    <section class="location-bar" style="margin-top: var(--s-5);">
+      <div class="row" style="gap: var(--s-3);">
+        <span class="badge badge-cyan badge-dot">Location</span>
+        <span class="location-coords" data-coords>—</span>
+      </div>
+      <div class="row" style="gap: var(--s-2); flex-wrap: wrap;">
+        <button class="btn btn-primary btn-sm" data-use-loc type="button">Use my location</button>
+        <button class="btn btn-ghost btn-sm" data-manual type="button">Enter manually</button>
+      </div>
+    </section>
+
+    <form class="card hidden" data-manual-form style="margin-top: var(--s-3); display:grid; grid-template-columns: 1fr 1fr auto; gap: var(--s-3); align-items:end;">
+      <div class="field">
+        <label class="label" for="lat">Latitude</label>
+        <input class="input" id="lat" name="lat" type="number" step="any" min="-90" max="90" required />
+      </div>
+      <div class="field">
+        <label class="label" for="lon">Longitude</label>
+        <input class="input" id="lon" name="lon" type="number" step="any" min="-180" max="180" required />
+      </div>
+      <button class="btn btn-primary" type="submit">Apply</button>
+    </form>
+
+    <div class="help" data-status style="margin-top: var(--s-5);"></div>
+    <div class="discover-grid" data-groups></div>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot-inner">
+      <span>© SecureConnect-AI — demo build</span>
+      <span class="mono dim">Trust gate ≥ 0.5 · Haversine geofence</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/discover.js"></script>
+</body>
+</html>

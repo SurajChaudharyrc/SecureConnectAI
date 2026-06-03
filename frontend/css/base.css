@@ -1,0 +1,102 @@
+/* Self-hosted fonts (Latin subset, woff2). Keeps the strict CSP intact —
+   no external font requests. font-display: swap avoids invisible text. */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/inter-700.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 800; font-display: swap; src: url("/assets/fonts/inter-800.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/jetbrains-mono-400.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonts/jetbrains-mono-600.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/jetbrains-mono-700.woff2") format("woff2"); }
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+img, picture, svg, video, canvas { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { border: 0; background: none; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+:focus-visible { outline: 2px solid var(--brand-cyan); outline-offset: 3px; border-radius: 6px; }
+:focus:not(:focus-visible) { outline: none; }
+
+html, body {
+  min-height: 100%;
+  background: var(--bg-0);
+  color: var(--fg-0);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Atmospheric background — a single, static, low-opacity radial.
+   (Deliberately NOT animated: a drifting multi-color mesh is the canonical
+   generative-AI hero tell and competes with foreground text for attention.) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20vh -20vw;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(80px) saturate(115%);
+  opacity: 0.28;
+  background:
+    radial-gradient(42vw 42vh at 18% 8%, rgba(92, 242, 224, 0.30), transparent 70%),
+    radial-gradient(38vw 38vh at 82% 18%, rgba(139, 123, 255, 0.26), transparent 70%);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg-0);
+  line-height: 1.1;
+}
+h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; }
+p { color: var(--fg-1); }
+
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--fg-2); }
+.dim   { color: var(--fg-3); }
+
+.gradient-text {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--s-5);
+}
+.stack > * + * { margin-top: var(--s-4); }
+.stack-lg > * + * { margin-top: var(--s-6); }
+.row { display: flex; align-items: center; gap: var(--s-3); }
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.grow { flex: 1; min-width: 0; }
+.hidden { display: none !important; }
+
+main {
+  flex: 1;
+  padding: var(--s-8) 0 var(--s-10);
+}
